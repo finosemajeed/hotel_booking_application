@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_homepage_ui/presentation/explore_screen/explore_screen.dart';
 import 'package:hotel_homepage_ui/presentation/home_screen/home_screen.dart';
+import 'package:hotel_homepage_ui/presentation/product_view_screen/product_view_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +18,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const NavigationScreen(),
+      routes: {
+        '/product_view': (context) => ProductViewScreen(),
+        '/explore_screen': (context) => ExploreScreen(),
+      },
     );
   }
 }

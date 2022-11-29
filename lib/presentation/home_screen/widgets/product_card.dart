@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hotel_homepage_ui/core/color_config.dart';
+import 'package:hotel_homepage_ui/db/dummy_data.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -13,41 +15,24 @@ class ProductCard extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
-      children: const [
-        _ItemCard(
-          image: 'assets/products/hotel1.jfif',
-          title: 'Abad Whispering Palms',
-          subtitle: 'Resort in Kumarakom',
-          price: '5785',
-        ),
-        _ItemCard(
-          image: 'assets/products/hotel2.jfif',
-          title: 'Ramada Resort by Wyndham Kochi',
-          subtitle: 'Ernakulam, Kerala 682506',
-          price: '9874',
-        ),
-        _ItemCard(
-          image: 'assets/products/hotel3.jfif',
-          title: 'Jungle Beats Resorts',
-          subtitle:
-              'Thanjilod, Via Soojipara Waterfalls, Meppadi P.O, Meppadi, Kerala 673577',
-          price: '4374',
-        ),
-        _ItemCard(
-          image: 'assets/products/hotel4.jfif',
-          title: 'Wetzlar Resorts and Hotels',
-          subtitle:
-              'Prasad Road , Market PO East, Kadathy, Muvattupuzha, Kerala 686673',
-          price: '3888',
-        ),
-        _ItemCard(
-          image: 'assets/products/hotel5.jfif',
-          title: 'Hiliya Resort Wayanad',
-          subtitle: 'Kenichira, Near Sulthan Bathery, Wayanad, Kerala',
-          price: '1118',
-        ),
-      ],
+      children: dummyProduct.map((product) {
+        return GestureDetector(
+          onTap: () => onItemClick(context, product['id']),
+          child: _ItemCard(
+            image: product['image'],
+            title: product['name'],
+            price: product['price'].toString(),
+            subtitle: product['place'],
+            rating: product['rating'],
+            ratingColor: kGreen,
+          ),
+        );
+      }).toList(),
     );
+  }
+
+  void onItemClick(BuildContext context, productId) {
+    Navigator.of(context).pushNamed('/product_view', arguments: productId);
   }
 }
 
@@ -58,11 +43,15 @@ class _ItemCard extends StatelessWidget {
     required this.title,
     required this.price,
     required this.subtitle,
+    required this.rating,
+    required this.ratingColor,
   }) : super(key: key);
   final String image;
   final String title;
   final String price;
   final String subtitle;
+  final double rating;
+  final Color ratingColor;
 
   @override
   Widget build(BuildContext context) {
@@ -138,13 +127,21 @@ class _ItemCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 8.0, bottom: 8),
               child: Row(
-                children: const [
-                  Icon(Icons.star, color: Colors.green),
-                  Icon(Icons.star, color: Colors.green),
-                  Icon(Icons.star, color: Colors.green),
-                  Icon(Icons.star, color: Colors.green),
-                  SizedBox(width: 10),
-                  Text(
+                children: [
+                  RatingBar.builder(
+                    initialRating: rating,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemSize: 22,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    itemBuilder: (context, _) =>
+                        Icon(Icons.star, color: ratingColor),
+                    onRatingUpdate: (rating) {},
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
                     '(220 reviews)',
                     style: TextStyle(color: Colors.grey),
                   )
