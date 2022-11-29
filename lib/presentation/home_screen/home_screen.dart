@@ -8,6 +8,7 @@ class NavigationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentIndex = ValueNotifier(0);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -21,6 +22,25 @@ class NavigationScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: ValueListenableBuilder(
+        valueListenable: currentIndex,
+        builder: (BuildContext context, value, Widget? child) {
+          return BottomNavigationBar(
+              currentIndex: currentIndex.value,
+              onTap: (index) {
+                currentIndex.value = index;
+              },
+              selectedItemColor: Colors.black,
+              items: const [
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.search), label: 'Serach'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite_rounded), label: 'Favorites'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings), label: 'Settings')
+              ]);
+        },
       ),
     );
   }

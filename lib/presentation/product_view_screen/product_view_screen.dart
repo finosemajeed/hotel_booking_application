@@ -57,19 +57,19 @@ class ProductViewScreen extends StatelessWidget {
         valueListenable: currentIndex,
         builder: (BuildContext context, value, Widget? child) {
           return BottomNavigationBar(
-              currentIndex: currentIndex.value,
-              onTap: (index) {
-                currentIndex.value = index;
-              },
-              selectedItemColor: Colors.black,
-              items: const [
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.search), label: 'Serach'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.favorite_rounded), label: 'Favorites'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.settings), label: 'Settings')
-              ]);
+            currentIndex: currentIndex.value,
+            onTap: (index) {
+              currentIndex.value = index;
+            },
+            selectedItemColor: Colors.black,
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.search), label: 'Search'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle), label: 'Profile')
+            ],
+          );
         },
       ),
     );
