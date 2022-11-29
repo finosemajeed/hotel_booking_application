@@ -32,7 +32,7 @@ class ProductViewScreen extends StatelessWidget {
                   pColor: kGreen,
                   price: product['price'],
                   rating: product['rating']),
-              BookButton(pColor: blue),
+              BookButton(pColor: kBlue),
               SizedBox(
                 height: 30,
               ),

@@ -14,17 +14,17 @@ class SearchFormField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: 'Search here,',
           filled: true,
-          fillColor: white,
+          fillColor: kWhite,
           prefixIcon: const Icon(Icons.search),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
               borderSide: const BorderSide(
-                color: white,
+                color: kWhite,
               )),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
               borderSide: const BorderSide(
-                color: white,
+                color: kWhite,
               )),
         ),
       ),

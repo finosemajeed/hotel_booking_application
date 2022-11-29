@@ -15,17 +15,17 @@ class ServiceListCard extends StatelessWidget {
           _ServiceCard(
             icon: Icons.airline_seat_flat,
             title: 'Hotel',
-            color: pink,
+            color: kPink,
           ),
           _ServiceCard(
             icon: Icons.restaurant,
             title: 'Restaurant',
-            color: blue,
+            color: kBlue,
           ),
           _ServiceCard(
             icon: Icons.coffee,
             title: 'Cafe',
-            color: orange,
+            color: kOrange,
           ),
         ],
       ),
@@ -58,13 +58,13 @@ class _ServiceCard extends StatelessWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Icon(
             icon,
-            color: white,
+            color: kWhite,
             size: 35,
           ),
           const Text(
             'Hotel',
             style: TextStyle(
-              color: white,
+              color: kWhite,
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),

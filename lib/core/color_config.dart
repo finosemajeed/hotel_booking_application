@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const white = Colors.white;
-const pink = Colors.pink;
-const blue = Colors.blue;
-const orange = Colors.orange;
+const kWhite = Colors.white;
+const kPink = Colors.pink;
+const kBlue = Colors.blue;
+const kOrange = Colors.orange;
 const kGreen = Colors.green;

@@ -42,7 +42,7 @@ class CustomAppBar extends StatelessWidget {
               child: Text(
                 'Type your Location',
                 style: TextStyle(
-                  color: white,
+                  color: kWhite,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),

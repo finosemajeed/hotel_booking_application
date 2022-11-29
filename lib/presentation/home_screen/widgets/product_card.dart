@@ -58,7 +58,7 @@ class _ItemCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Card(
-        color: white,
+        color: kWhite,
         elevation: 3,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         child: Column(
@@ -71,7 +71,7 @@ class _ItemCard extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(image), fit: BoxFit.fill),
-                      color: pink,
+                      color: kPink,
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(8),
                           topRight: Radius.circular(8))),
@@ -83,7 +83,7 @@ class _ItemCard extends StatelessWidget {
                       onPressed: () {},
                       icon: const Icon(
                         Icons.star_border_outlined,
-                        color: white,
+                        color: kWhite,
                       )),
                 ),
                 Positioned(
@@ -92,7 +92,7 @@ class _ItemCard extends StatelessWidget {
                     child: Container(
                       height: 40,
                       width: 70,
-                      color: white,
+                      color: kWhite,
                       child: Center(
                           child: Text(
                         '₹ $price',

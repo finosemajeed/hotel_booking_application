@@ -11,7 +11,7 @@ const List<Map<String, dynamic>> dummyProduct = [
   },
   {
     'id': 2,
-    'name': 'Ramada Resort by Wyndham Kochi',
+    'name': 'Ramada Resort by Wyndham',
     'price': 9874,
     'place': 'Ernakulam, Kerala 682506',
     'image': 'assets/products/hotel2.jfif',
