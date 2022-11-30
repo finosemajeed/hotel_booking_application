@@ -15,6 +15,8 @@ class ProductCard extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
+
+      // TODO: data model
       children: dummyProduct.map((product) {
         return GestureDetector(
           onTap: () => onItemClick(context, product['id']),

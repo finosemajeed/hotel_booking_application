@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable
 
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hotel_homepage_ui/presentation/explore_screen/explore_screen.dart';
@@ -12,7 +11,7 @@ class MainScreen extends StatelessWidget {
 
   final pages = <Widget>[
     const HomeScreen(),
-    ExploreScreen(),
+    const ExploreScreen(),
     const Icon(Icons.settings),
   ];
 
@@ -25,7 +24,7 @@ class MainScreen extends StatelessWidget {
           return pages[index];
         },
       ),
-      bottomNavigationBar: BottomNavigationWidget(),
+      bottomNavigationBar: const BottomNavigationWidget(),
     );
   }
 }

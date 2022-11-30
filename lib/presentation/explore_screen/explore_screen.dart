@@ -8,6 +8,8 @@ import 'package:hotel_homepage_ui/presentation/explore_screen/widgets/hotel_pack
 import 'package:hotel_homepage_ui/presentation/explore_screen/widgets/popular_hotels.dart';
 
 class ExploreScreen extends StatelessWidget {
+  const ExploreScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +32,13 @@ class ExploreScreen extends StatelessWidget {
                   itemCount: dummyProduct.length,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (ctx, index) {
-                    return HotelPackagesCard(
-                      image: hotelDetails[index].image,
-                      rate: hotelDetails[index].price.toString(),
-                      name: hotelDetails[index].name,
+                    return GestureDetector(
+                      onTap: () => onItemClick(context, hotelDetails[index].id),
+                      child: HotelPackagesCard(
+                        image: hotelDetails[index].image,
+                        rate: hotelDetails[index].price.toString(),
+                        name: hotelDetails[index].name,
+                      ),
                     );
                   }),
               const SizedBox(
@@ -44,5 +49,9 @@ class ExploreScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void onItemClick(BuildContext context, productId) {
+    Navigator.of(context).pushNamed('/product_view', arguments: productId);
   }
 }

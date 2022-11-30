@@ -37,14 +37,21 @@ class PopularHotelCardsList extends StatelessWidget {
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemCount: hotelDetails.length,
-          itemBuilder: ((context, index) => PopularHotelsCard(
-                desc: 'A three star hotel in kakkanad',
-                image: hotelDetails[index].image,
-                name: hotelDetails[index].name,
-                rate: hotelDetails[index].price.toString(),
-                rating: hotelDetails[index].rating.toString(),
+          itemBuilder: ((context, index) => GestureDetector(
+                onTap: () => onItemClick(context, hotelDetails[index].id),
+                child: PopularHotelsCard(
+                  desc: 'A three star hotel in kakkanad',
+                  image: hotelDetails[index].image,
+                  name: hotelDetails[index].name,
+                  rate: hotelDetails[index].price.toString(),
+                  rating: hotelDetails[index].rating.toString(),
+                ),
               )),
         ));
+  }
+
+  void onItemClick(BuildContext context, productId) {
+    Navigator.of(context).pushNamed('/product_view', arguments: productId);
   }
 }
 

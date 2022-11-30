@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:hotel_homepage_ui/presentation/home_screen/widgets/custom_app_bar.dart';

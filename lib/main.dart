@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       home: MainScreen(),
       routes: {
-        '/product_view': (context) => ProductViewScreen(),
-        '/explore_screen': (context) => ExploreScreen(),
+        '/product_view': (context) => const ProductViewScreen(),
+        '/explore_screen': (context) => const ExploreScreen(),
       },
     );
   }

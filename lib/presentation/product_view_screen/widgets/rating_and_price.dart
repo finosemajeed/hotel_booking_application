@@ -11,7 +11,7 @@ class RatingAndPrice extends StatelessWidget {
 
   final Color pColor;
   final int price;
-  final rating;
+  final double rating;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_homepage_ui/core/color_config.dart';
 import 'package:hotel_homepage_ui/db/dummy_data.dart';
+import 'package:hotel_homepage_ui/db/hotel_data_model.dart';
+import 'package:hotel_homepage_ui/presentation/main_screen/widgets/bottom_navigation_widget.dart';
 import 'package:hotel_homepage_ui/presentation/product_view_screen/widgets/book_button.dart';
 import 'package:hotel_homepage_ui/presentation/product_view_screen/widgets/custom_image.dart';
 import 'package:hotel_homepage_ui/presentation/product_view_screen/widgets/description.dart';
@@ -11,29 +13,30 @@ class ProductViewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productId = ModalRoute.of(context)?.settings.arguments;
+    final productId = ModalRoute.of(context)?.settings.arguments as int;
     final product = dummyProduct.firstWhere(
       (element) => element['id'] == productId,
     );
-    final currentIndex = ValueNotifier(0);
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
         padding: const EdgeInsets.all(0),
         children: [
           CustomImage(
-              roomImage: product['image'],
-              place: product['place'],
-              rating: product['rating'],
-              roomName: product['name']),
+            roomImage: hotelDetails[productId].image,
+            place: hotelDetails[productId].place,
+            rating: hotelDetails[productId].rating,
+            roomName: hotelDetails[productId].name,
+          ),
           Column(
             children: [
               RatingAndPrice(
-                  pColor: kGreen,
-                  price: product['price'],
-                  rating: product['rating']),
-              BookButton(pColor: kBlue),
-              SizedBox(
+                pColor: kGreen,
+                price: hotelDetails[productId].price,
+                rating: product['rating'],
+              ),
+              const BookButton(pColor: kBlue),
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -53,25 +56,26 @@ class ProductViewScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: ValueListenableBuilder(
-        valueListenable: currentIndex,
-        builder: (BuildContext context, value, Widget? child) {
-          return BottomNavigationBar(
-            currentIndex: currentIndex.value,
-            onTap: (index) {
-              currentIndex.value = index;
-            },
-            selectedItemColor: Colors.black,
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search), label: 'Search'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle), label: 'Profile')
-            ],
-          );
-        },
-      ),
+      bottomNavigationBar: const BottomNavigationWidget(),
+      //  ValueListenableBuilder(
+      //   valueListenable: currentIndex,
+      //   builder: (BuildContext context, value, Widget? child) {
+      //     return BottomNavigationBar(
+      //       currentIndex: currentIndex.value,
+      //       onTap: (index) {
+      //         currentIndex.value = index;
+      //       },
+      //       selectedItemColor: Colors.black,
+      //       items: const [
+      //         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+      //         BottomNavigationBarItem(
+      //             icon: Icon(Icons.search), label: 'Search'),
+      //         BottomNavigationBarItem(
+      //             icon: Icon(Icons.account_circle), label: 'Profile')
+      //       ],
+      //     );
+      //   },
+      // ),
     );
   }
 }
